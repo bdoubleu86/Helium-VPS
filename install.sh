@@ -14,7 +14,7 @@ export PASS="1"
 ./openvpn-install.sh
 
 iptables -A FORWARD -p tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1240
-iptables -A FORWARD -i tun0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables -A FORWARD -i tun0 -j ACCEPT; iptables -t nat -A POSTROUTING -o ens192 -j MASQUERADE
 iptables -A FORWARD -i ens192 -o tun0 -p tcp --syn --dport 44158 -m conntrack --ctstate NEW -j ACCEPT
 iptables -A FORWARD -i ens192 -o tun0 -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -t nat -A PREROUTING -i ens192 -p tcp --dport 44158 -j DNAT --to-destination 10.8.0.2
