@@ -3,7 +3,7 @@
 TMP_FILE=/tmp/inet_up
 
 not_inet_action() {
- sleep 70 && touch /etc/banner && reboot
+ sleep 70 && touch /etc/banner && date >> /root/reboot_log && reboot
 }
 
 if ping -c5 10.8.0.1; then
