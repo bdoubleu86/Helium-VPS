@@ -9,8 +9,8 @@ PREFIX="$(date +%Y-%m-%d-%H-%M-%S): "
 
 touch $UPTIME_LOG
 
-not_inet_action() {
- sleep 70 && touch /etc/banner && reboot
+no_inet_action() {
+ sleep 60 && touch /etc/banner && reboot
 }
 
 #Rotate the logfile if MAX_LINES is reached
